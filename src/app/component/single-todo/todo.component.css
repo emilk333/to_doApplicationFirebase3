@@ -1,0 +1,97 @@
+.container {
+  padding:0;
+  margin:0;
+}
+
+
+.todo-component-container {
+  background-color: #f7faff;
+
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 20px;
+  border-color: #dee1e6;
+
+  /* -webkit-box-shadow: 5px 6px 8px -4px rgba(0,0,0,0.28);
+  -moz-box-shadow: 5px 6px 8px -4px rgba(0,0,0,0.28);
+  box-shadow: 5px 6px 8px -4px rgba(0,0,0,0.28); */
+}
+
+.mat-elevation-z0 {
+  box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+}
+
+.check {
+  padding-top: 33px;
+}
+
+.description-container{
+  text-align: left;
+  padding-top: 20px;
+  width: 100%;
+  word-wrap: break-word;
+  overflow-y: auto;
+}
+
+.description-container p {
+  font-size: 18px;
+}
+
+.category-container {
+  text-align: left;
+  width: 100%;
+  word-wrap: break-word;
+  overflow-y: auto;
+  white-space: pre-wrap
+} 
+
+.paragraphs p {
+  margin-top: -5px;
+}
+
+.edit-buttons {
+  padding-top: 34px;
+  padding-left: 30px;
+  padding-right: 0px;
+}
+
+.edit-button {
+  margin-right: 13px;
+}
+
+.edit-form-field {
+  padding-top: 20px;
+  padding-left: 12px;
+}
+
+.form-group-container {
+  margin-bottom: 0rem!important;
+}
+
+@media only screen
+  and (min-device-width: 320px)
+  and (max-device-width: 480px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+  .paragraphs {
+    padding-left: 30px;
+  }
+
+  .edit-button {
+    position: absolute;
+    top: 78px;
+    margin-right: 0px;
+    right: 8px;
+  }
+
+  .edit-button-delete {
+    position: absolute;
+    top: 22px;
+    right: 8px;
+  }
+
+  .todo-component-container {
+    min-height: 150px;
+  }
+
+
+}

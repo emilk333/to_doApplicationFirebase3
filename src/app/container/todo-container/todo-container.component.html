@@ -1,0 +1,81 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-12 col-md-12 col-12 main-container">
+      <div class="heading" @todoAnimation #top >
+        <div class="weather">
+          <div *ngIf="weatherReady; else load" class="weather-icon">
+            <img [src]="imagePath" alt="clear">
+          </div>
+
+          <ng-template #load>
+            <div class="md-preloader">
+              <svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="75" width="75" viewbox="0 0 75 75">
+                <circle cx="37.5" cy="37.5" r="33.5" stroke-width="8"/>
+              </svg>
+            </div>
+          </ng-template>
+
+          <div class="weather-title">
+            <h1>{{degree}} °C</h1>
+          </div>
+        </div>
+
+        <div class="date">
+          <h1>{{date | date}}</h1>
+        </div>
+      </div>
+
+      <div class="create-todo"  (mouseover)="setOpen(true)" (mouseout)="setOpen(false)" @todoAnimation>
+        <button mat-fab color="primary" (click)="expandCreate()" class="mat-elevation-z0">
+          <div *ngIf="!addState" class=""><mat-icon class="icon-color material-icons-big"[inline]="true" [@buttonState]="buttonState">add</mat-icon></div>
+          <div *ngIf="addState" class=""><mat-icon class="icon-color material-icons-big"[inline]="true" [@buttonState]="buttonState">close</mat-icon></div>
+        </button>
+      </div>
+
+      <div *ngIf="addState" [@fromVoidAnimation]>
+        <div class="create-todo-section">
+          <form class="form-group-container">
+              <mat-form-field class="form-group form-group-description">
+                <textarea matInput matTextareaAutosize="true" [(ngModel)]="new_description" name="description" type="text" class="form-control input-field" placeholder="Task title"></textarea>
+              </mat-form-field>
+
+              <mat-form-field class="form-group form-group-category">
+                <textarea matInput matTextareaAutosize="true" [(ngModel)]="new_category" name="category" type="text" class="form-control input-field" placeholder="Task description"></textarea>
+              </mat-form-field>
+   
+              <div class="form-group save-task-button">
+                <button mat-stroked-button color="accent" (click)="saveTask()">
+                  <p>Save Task</p>
+                </button>
+      
+              </div>
+            </form>
+         </div>
+      </div>
+     
+    
+
+        <div class="to-do-list" >
+          <!-- THIS BREAKS THE DELETE FLOW -->
+          <div *ngIf="taskReady" class="md-preloader2">
+              <svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="75" width="75" viewbox="0 0 75 75">
+                <circle cx="37.5" cy="37.5" r="33.5" stroke-width="8"/>
+              </svg>
+          </div>
+          <div *ngFor="let task of tasks | async; let i = index; trackBy:trackFbObjects" [attr.data-index]="i" [@todoAnimation]="taskLength">
+            <div class="todo-container" >
+              <app-todo [tasks]="tasks" [task]="task" (checked)=checkTask($event) (edit)="editTask($event)"></app-todo>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="filler">
+
+        </div>
+
+     
+
+    </div>
+  </div>
+</div>

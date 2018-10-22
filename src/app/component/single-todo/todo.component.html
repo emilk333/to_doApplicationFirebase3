@@ -1,0 +1,47 @@
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12 col-md-12 col-12 todo-component-container">
+      <div class="row">
+        <div class="col-lg-2 col-md-2 col-2 check">
+          <mat-checkbox class="checkbox" [(ngModel)]="task.check" (change)="toggleCheck(task)"></mat-checkbox>
+        </div>
+
+        <div class="col-lg-7 col-md-7 col-8 paragraphs">
+          <form class="form-group form-group-container" action="index.html" method="post">
+
+            <div class="description-container">
+              <label *ngIf="!isEdit" from="description"><h2>{{task.description}}</h2></label>
+              <mat-form-field *ngIf="isEdit" class="form-group form-group-description">
+                <textarea matInput matTextareaAutosize="true" [(ngModel)]="edit_description" name="edit_description" type="text" class="form-control" placeholder="{{task.description}}"></textarea>
+              </mat-form-field>     
+            </div>
+
+            <div class="category-container">
+              <label *ngIf="!isEdit" from="edit_category"><p>{{task.category}}</p></label>
+              <mat-form-field *ngIf="isEdit" class="form-group form-group-category">
+                <textarea matInput matTextareaAutosize="true" [(ngModel)]="edit_category" name="edit_category" type="text" class="form-control" placeholder="{{task.category}}"></textarea>
+              </mat-form-field>     
+            </div>
+          </form>
+        </div>
+
+        <div class="col-lg-3 col-md-3 col-2 edit-buttons">
+
+          <button mat-mini-fab color="primary" *ngIf="!isEdit" (click)="editTask(task)" class="edit-button mat-elevation-z0" (mouseover)="setOpen1(true)" (mouseout)="setOpen1(false)">
+            <div class=""><mat-icon class="edit-edited icon-color" [@buttonState]="buttonState1" [inline]="true">edit</mat-icon></div>
+          </button>
+
+          <button mat-mini-fab color="primary" *ngIf="isEdit" (click)="submitEditTask()" class="edit-button mat-elevation-z0" (mouseover)="setOpen1(true)" (mouseout)="setOpen1(false)">
+              <div class=""><mat-icon class="submit-edited icon-color" [@buttonState]="buttonState1" [inline]="true">check</mat-icon></div>
+            </button>
+
+          <button mat-mini-fab color="primary" (click)="deleteTask(task)" class="mat-elevation-z0 edit-button-delete" (mouseover)="setOpen2(true)" (mouseout)="setOpen2(false)">
+            <div class=""><mat-icon class="delete-button icon-color" [@buttonState]="buttonState2" [inline]="true">delete_forever</mat-icon></div>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
