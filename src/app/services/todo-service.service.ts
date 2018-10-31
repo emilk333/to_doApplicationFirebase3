@@ -23,7 +23,6 @@ export class TaskService {
     //Add the new task to the collection
     this.tasks.add(task);
     // window.scrollTo(0,document.body.scrollHeight);
-  
   }
 
   updateTask(id, update) {

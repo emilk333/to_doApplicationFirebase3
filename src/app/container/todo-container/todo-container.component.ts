@@ -132,7 +132,7 @@ export class TodoContainerComponent implements OnInit {
 
 
   getWeather() {
-    this.http.get('http://api.openweathermap.org/data/2.5/weather?lat=' + this.lat + '&lon=' + this.lng + '&appid=a63a8b17b4003c0e89b582ee9eb5ca90')
+    this.http.get('https://api.openweathermap.org/data/2.5/weather?lat=' + this.lat + '&lon=' + this.lng + '&appid=a63a8b17b4003c0e89b582ee9eb5ca90')
       .subscribe(
         (res: Response) => {
           const weather = res.json();
